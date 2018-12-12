@@ -1,0 +1,43 @@
+{
+  "controllers": {
+    "upper_body_controller": {
+      "sync_read": true,
+      "attached_motors": [
+        "all"
+      ],
+      "port": "/dev/ttyUSB0"
+    }
+  },
+  "motorgroups": {
+    "all": [
+      "r_elbow_y",
+      "r_arm_z"
+    ]
+  },
+  "motors": {
+
+    "r_elbow_y": {
+      "offset": -90.0,
+      "type": "MX-28",
+      "id": 54,
+      "angle_limit": [
+        0,
+        147
+      ],
+      "orientation": "indirect"
+    },
+
+    "r_arm_z": {
+      "offset": 0.0,
+      "type": "MX-28",
+      "id": 53,
+      "angle_limit": [
+        -90,
+        90
+      ],
+      "orientation": "indirect"
+    }
+    
+  }
+}
+
