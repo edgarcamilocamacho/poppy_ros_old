@@ -93,4 +93,4 @@ signal.signal(signal.SIGINT, signal_handler)
 dxl.start()
 
 print('Running...')
-rospy.spin()
+#rospy.spin()

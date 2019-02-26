@@ -105,9 +105,13 @@
     <disable_collisions link1="bust_motors" link2="r_shoulder_motor" reason="Never" />
     <disable_collisions link1="bust_motors" link2="r_upper_arm" reason="Never" />
     <disable_collisions link1="bust_motors" link2="spine" reason="Adjacent" />
+    <disable_collisions link1="chest" link2="head" reason="User" />
     <disable_collisions link1="chest" link2="l_shoulder" reason="Adjacent" />
+    <disable_collisions link1="chest" link2="l_shoulder_motor" reason="User" />
     <disable_collisions link1="chest" link2="neck" reason="Adjacent" />
     <disable_collisions link1="chest" link2="r_shoulder" reason="Adjacent" />
+    <disable_collisions link1="chest" link2="r_shoulder_motor" reason="User" />
+    <disable_collisions link1="chest" link2="spine" reason="User" />
     <disable_collisions link1="head" link2="l_shoulder" reason="Never" />
     <disable_collisions link1="head" link2="l_shoulder_motor" reason="Never" />
     <disable_collisions link1="head" link2="neck" reason="Adjacent" />
@@ -117,6 +121,7 @@
     <disable_collisions link1="l_forearm" link2="l_shoulder" reason="Never" />
     <disable_collisions link1="l_forearm" link2="l_shoulder_motor" reason="Never" />
     <disable_collisions link1="l_forearm" link2="l_upper_arm" reason="Adjacent" />
+    <disable_collisions link1="l_forearm" link2="neck" reason="User" />
     <disable_collisions link1="l_shoulder" link2="l_shoulder_motor" reason="Adjacent" />
     <disable_collisions link1="l_shoulder" link2="l_upper_arm" reason="Never" />
     <disable_collisions link1="l_shoulder" link2="neck" reason="Never" />
@@ -134,6 +139,7 @@
     <disable_collisions link1="l_upper_arm" link2="r_shoulder" reason="Never" />
     <disable_collisions link1="l_upper_arm" link2="r_shoulder_motor" reason="Never" />
     <disable_collisions link1="l_upper_arm" link2="r_upper_arm" reason="Never" />
+    <disable_collisions link1="neck" link2="r_forearm" reason="User" />
     <disable_collisions link1="neck" link2="r_shoulder" reason="Never" />
     <disable_collisions link1="neck" link2="r_shoulder_motor" reason="Never" />
     <disable_collisions link1="neck" link2="r_upper_arm" reason="Never" />
