@@ -47,6 +47,7 @@ def callbackTrajectory(data):
     dxl.playMovementBlock(movement)
 
 def callbackPredefMovement(data):
+    # rostopic pub /poppy_control/playPredefMovement std_msgs/ring 'macarena'
 	name = data.data
 	rospy.loginfo(rospy.get_caller_id() + "Executing movement: '" + name + "'")
 	if name[-5:]!='.json':
@@ -57,6 +58,10 @@ def callbackPredefMovement(data):
 	time.sleep(0.2)
 	dxl.playMovement(movement)
 
+def callbackSetPosition(data):
+    # rostopic pub /poppy_control/setPosition sensor_msgs/JointState '{name:['r_shoulder_x'], position:[10.0]}'
+    rospy.loginfo(rospy.get_caller_id() + "Going to position")
+    dxl.setAngle(data.name, data.position)
 
 print('Starting node...')
 rospy.init_node('poppy_control', anonymous=False)
@@ -65,6 +70,7 @@ pub_joint_states = rospy.Publisher('/joint_states', JointState, queue_size=1)
 print('Creating Subscribers...')
 rospy.Subscriber("/execute_trajectory/goal", ExecuteTrajectoryActionGoal, callbackTrajectory)
 rospy.Subscriber("/poppy_control/playPredefMovement", String, callbackPredefMovement)
+rospy.Subscriber("/poppy_control/setPosition", JointState, callbackSetPosition)
 
 print('Creating IODynamixel controller...')
 dxl = IODynamixel(creature="{}/creatures/poppy_torso_sim.json", simulator='vrep')

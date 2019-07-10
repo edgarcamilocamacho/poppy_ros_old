@@ -17,7 +17,8 @@ class StateValidity():
         rospy.loginfo('service is avaiable')
         # prepare msg to interface with moveit
         self.rs = RobotState()
-        self.rs.joint_state.name = ['joint1','joint2']
+        self.rs.joint_state.name = ['r_shoulder_y', 'l_shoulder_y', 'l_shoulder_x', 'r_elbow_y', 'r_shoulder_x', 'l_arm_z', 'l_elbow_y', 'r_arm_z']
+        # self.rs.joint_state.name = ['r_shoulder_y', 'l_shoulder_y', 'l_shoulder_x', 'r_elbow_y', 'r_shoulder_x', 'l_arm_z', 'l_elbow_y', 'r_arm_z']
         self.rs.joint_state.position = [0.0, 0.0]
         self.joint_states_received = False
 
@@ -38,6 +39,7 @@ class StateValidity():
         '''
         self.rs.joint_state.name = msg.name
         self.rs.joint_state.position = msg.position
+        # self.rs.joint_state.position = [msg.position[i] for i, j in enumerate(msg.name) if j in self.rs.joint_state.name]
         self.joint_states_received = True
 
 
@@ -52,7 +54,6 @@ class StateValidity():
         if constraints != None:
             gsvr.constraints = constraints
         result = self.sv_srv.call(gsvr)
-        print(result)
         return result
 
 
