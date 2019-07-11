@@ -39,7 +39,7 @@ targets4 = [[-2.541459798812866, 1.3173927068710327, 1.323833703994751, 1.643089
 targets = {"r_arm":targets4, "r_arm_3":targets3, "r_arm_2":targets2}
 
 motors = {}
-creature = "/home/camilo/repositories/IODynamixel/creatures/poppy_torso_sim.json"
+creature = "/home/camilo/repositories/IODynamixel/src/IODynamixel/creatures/poppy_torso_sim.json"
 with open(creature) as f:
     motors = json.load(f)
 

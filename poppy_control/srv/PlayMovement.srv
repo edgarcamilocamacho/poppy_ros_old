@@ -1,0 +1,5 @@
+bool            wait
+int8            fps
+Trajectory[]    trajectories
+---
+int8            error
