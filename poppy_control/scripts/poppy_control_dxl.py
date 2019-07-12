@@ -120,7 +120,7 @@ rospy.Subscriber("/execute_trajectory/goal", ExecuteTrajectoryActionGoal, subMov
 #rospy.loginfo(rospy.get_caller_id()+ ' Creating services...')
 srv_predef_movement = rospy.Service('/poppy_predef_movement', PredefMovement, srvPredefMovementCallback)
 srv_play_movement = rospy.Service('/poppy_play_movement', PlayMovement, srvPlayMovementCallback)
-srv_goto_position = rospy.Service('/poppy_goto_position', GotoPositions, srvGotoPositionCallback)
+srv_goto_position = rospy.Service('/poppy_goto_positions', GotoPositions, srvGotoPositionCallback)
 
 rospy.loginfo(rospy.get_caller_id() + ' Creating IODynamixel controller...')
 dxl = IODynamixel(creature="{}/creatures/poppy_torso_sim.json", simulator='vrep')

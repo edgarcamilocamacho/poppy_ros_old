@@ -1,3 +1,17 @@
+# This service receives and executes a movement
+#
+# Request:
+#
+# * bool: Waits until movement finishes.
+#
+# * fps: Frames per second of the movement
+#
+# * trajectories: trajectory for each joint
+#             
+# Reply:
+#
+# * error: 0. No error
+
 bool            wait
 int8            fps
 Trajectory[]    trajectories

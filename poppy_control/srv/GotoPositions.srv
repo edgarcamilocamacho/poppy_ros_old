@@ -1,3 +1,15 @@
+# This service sets the position of the joints
+#
+# Request:
+#
+# * joints: array of joints names
+#
+# * positions: desired positions
+#             
+# Reply:
+#
+# * error: 0. No error
+
 string[]        joints
 float32[]       positions
 ---

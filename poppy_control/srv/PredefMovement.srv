@@ -1,3 +1,18 @@
+# This service execute a predefined movement.
+#
+# Request:
+#
+# * movement: path of the json movement.
+#             Included movements:
+#               "{}/movements/saludo.json"
+#             User movements:
+#               "/home/user1/movements/surpise.json"
+#             
+# Reply:
+#
+# * error: 0. No error
+#          1. Movement not found
+
 string movement
 ---
 int8 error
