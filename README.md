@@ -64,7 +64,7 @@ $ catkin_make
 
 ## Running
 
-For **simulation**, don't forget starting vrep before running nodes.
+For **simulation**, don't forget starting *vrep* before running the nodes.
 
 You can use the *launch* file to run all the nodes, or run each node in different terminals.
 
