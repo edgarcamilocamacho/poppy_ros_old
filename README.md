@@ -62,23 +62,52 @@ $ catkin_make
 * /poppy_control/playPredefMovement ([std_msgs/String](http://docs.ros.org/api/std_msgs/html/msg/String.html))
 * /execute_trajectory/goal (moveit_msgs/ExecuteTrajectoryActionGoal)
 
+## Running
+
+For **simulation**, don't forget starting vrep before running nodes.
+
+You can use the *launch* file to run all the nodes, or run each node in different terminals.
+
+***Launch* file**:
+
+``` bash
+$ source ~/ros/poppy_ws/devel/setup.bash
+$ rosrun poppy_control poppy_control_dxl.py
+```
+
+**Different terminals:**
+
+Terminal 1, */poppy_control_dxl* node:
+
+``` bash
+$ source ~/ros/poppy_ws/devel/setup.bash
+$ rosrun poppy_control poppy_control_dxl.py
+```
+
+Terminal 2, */poppy_control_moveit* node:
+
+``` bash
+$ source ~/ros/poppy_ws/devel/setup.bash
+$ rosrun poppy_control poppy_control_moveit.py
+```
+
+Terminal 3, MoveIt nodes:
+
+``` bash
+$ source ~/ros/poppy_ws/devel/setup.bash
+$ roslaunch poppy_moveit_config poppy.launch
+```
+
 ## Testing
 
-Setup the workspace:
+### Predefined movement
+
+From terminal:
+
 ``` bash
-$ cd ~/ros/poppy_ws/
-$ source devel/setup.bash
+rosservice call /poppy_predef_movement saludos
 ```
 
-### *poppy_control* node
-
-Run the *poppy_control* node:
-``` bash
-$ rosrun poppy_control poppy_control.py
-```
-Play predefined movement:
-``` bash
-$ rostopic pub /poppy_control/playPredefMovement std_msgs/String "saludo"
-```
+From python:
 
 ## Thanks!
