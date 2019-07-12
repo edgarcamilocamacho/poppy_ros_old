@@ -25,7 +25,7 @@ from poppy_control_utils import *
 
 # TODO: Add FPS as parameter
 
-# rosservice call /poppy_predef_movement saludos
+# rosservice call /poppy_predef_movement saludo
 
 ### CALLBACKS
 
@@ -70,7 +70,6 @@ def srvPredefMovementCallback(data):
 
 def srvPlayMovementCallback(data):
     mov = play2mov(data)
-    print(mov)
     rospy.loginfo(rospy.get_caller_id() + " Movement received")
     if data.wait:
         dxl.playMovementBlock(mov)
