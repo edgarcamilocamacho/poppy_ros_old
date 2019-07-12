@@ -72,7 +72,7 @@ You can use the *launch* file to run all the nodes, or run each node in differen
 
 ``` bash
 $ source ~/ros/poppy_ws/devel/setup.bash
-$ rosrun poppy_control poppy_control_dxl.py
+$ roslaunch poppy_control poppy_control.launch
 ```
 
 **Different terminals:**
