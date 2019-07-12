@@ -6,10 +6,39 @@ Do not forget to visit our web page: https://cstopics.github.io/cstopics/
 
 ## Dependencies
 
-* Python >= X.X
-* IODynamixel (https://github.com/cstopics/IODynamixel)
-* ROS Kinetic (http://www.ros.org/)
-* MoveIt! (https://moveit.ros.org/) (Optional)
+Tested with Ubuntu 16.04
+
+* **Python == 2.7**
+
+MoveIt didn't work with python 3.
+
+* **IODynamixel**
+
+Installation instructions: https://github.com/cstopics/IODynamixel
+
+* **ROS Kinetic**
+
+It was tested with ROS Kinetic: http://wiki.ros.org/. If you already have it installed, you should ensure it is updates as follows:
+
+``` bash
+$ sudo rm /etc/apt/sources.list.d/ros-latest.list
+$ sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+$ sudo apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
+$ sudo apt-get update
+$ sudo apt-get install ros-kinetic-desktop-full
+$ sudo rosdep init
+$ rosdep update
+$ sudo apt install python-rosinstall python-rosinstall-generator python-wstool build-essential
+```
+
+* ***MoveIt!*** 
+
+https://moveit.ros.org/. Instructions:
+
+``` bash
+$ sudo apt-get install ros-${ROS_DISTRO}-catkin python-catkin-tools
+$ sudo apt install ros-${ROS_DISTRO}-moveit
+```
 
 ## Installation
 
