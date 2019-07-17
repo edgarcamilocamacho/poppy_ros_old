@@ -209,10 +209,16 @@ $ rosrun poppy_control poppy_control_moveit.py
 
 ### Predefined movement
 
-From terminal:
+From terminal, waiting until movement finishes:
 
 ``` bash
-rosservice call /poppy_predef_movement saludo
+rosservice call /poppy_predef_movement "{movement: '{}/movements/saludo.json', wait: True}"
+```
+
+From terminal, without waiting until movement finishes:
+
+``` bash
+rosservice call /poppy_predef_movement "{movement: '{}/movements/saludo.json', wait: False}"
 ```
 
 From python:
