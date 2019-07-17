@@ -231,4 +231,6 @@ From python: [test_goto_positions.py](https://github.com/cstopics/poppy_ros/blob
 
 From python: [test_plan_movement.py](https://github.com/cstopics/poppy_ros/blob/master/poppy_control/scripts/test_plan_movement.py)
 
+Plan movement without executing, and then execute the planned movemnt manually: [test_generated_trajectory.py](https://github.com/cstopics/poppy_ros/blob/master/poppy_control/scripts/test_generated_trajectory.py)
+
 ## Thanks!
