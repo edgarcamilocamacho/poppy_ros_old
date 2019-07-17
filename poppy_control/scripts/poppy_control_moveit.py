@@ -62,8 +62,10 @@ def srvPlanMovementCallback(data):
             rospy.loginfo(rospy.get_caller_id() + ' Correct plan')
             if data.execute:
                 if data.wait:
+                    rospy.logwarn(rospy.get_caller_id() + ' WAIT')
                     groups[group_name].execute(plan, wait=True)
                 else:
+                    rospy.logwarn(rospy.get_caller_id() + ' NO WAIT')
                     groups[group_name].execute(plan, wait=False)
             if data.ret_plan:
                 traj = planToNumpy(plan, data.ret_fps, data.angles_format)

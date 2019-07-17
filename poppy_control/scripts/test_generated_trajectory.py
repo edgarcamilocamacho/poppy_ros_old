@@ -5,8 +5,8 @@ import math
 from poppy_control.srv import *
 from poppy_control_utils import *
 
-group = 'r_arm_2'
-target = [161.29, -65.42]
+group = 'r_arm'
+#target = [161.29, -65.42]
 # target = [0.6482350826263428, 0.4289175271987915]
 fps = 40.0
 
@@ -22,7 +22,7 @@ resp = plan_mov(	group, 		# group
 					True,		# current_start 
 					[],			# start_pos
 					True,		# rand_target
-					target,		# target_pos 
+					[],		# target_pos 
 					False, 		# execute
 					False, 		# wait
 					True,		# ret_plan
