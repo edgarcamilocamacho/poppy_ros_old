@@ -189,19 +189,20 @@ $ source ~/ros/poppy_ws/devel/setup.bash
 $ rosrun poppy_control poppy_control_dxl.py
 ```
 
-Terminal 2, */poppy_control_moveit* node:
+Terminal 2, MoveIt nodes:
+
+``` bash
+$ source ~/ros/poppy_ws/devel/setup.bash
+$ roslaunch poppy_moveit_config poppy.launch
+```
+
+Terminal 3, */poppy_control_moveit* node:
 
 ``` bash
 $ source ~/ros/poppy_ws/devel/setup.bash
 $ rosrun poppy_control poppy_control_moveit.py
 ```
 
-Terminal 3, MoveIt nodes:
-
-``` bash
-$ source ~/ros/poppy_ws/devel/setup.bash
-$ roslaunch poppy_moveit_config poppy.launch
-```
 
 ## Testing
 
