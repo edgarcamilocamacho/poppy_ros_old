@@ -221,8 +221,14 @@ From terminal, without waiting until movement finishes:
 rosservice call /poppy_predef_movement "{movement: '{}/movements/saludo.json', wait: False}"
 ```
 
-From python:
+From python: [test_predef_movement.py](https://github.com/cstopics/poppy_ros/blob/master/poppy_control/scripts/test_predef_movement.py)
 
+### Predefined movement
 
+From python: [test_goto_positions.py](https://github.com/cstopics/poppy_ros/blob/master/poppy_control/scripts/test_goto_positions.py)
+
+### Plan movement
+
+From python: [test_plan_movement.py](https://github.com/cstopics/poppy_ros/blob/master/poppy_control/scripts/test_plan_movement.py)
 
 ## Thanks!
