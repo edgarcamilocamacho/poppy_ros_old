@@ -14,5 +14,6 @@
 #          1. Movement not found
 
 string movement
+bool wait
 ---
 int8 error

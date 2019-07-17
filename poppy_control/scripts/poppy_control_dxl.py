@@ -52,20 +52,20 @@ def pubJointStatesCallback(motors):
     pub_poppy_joint_states.publish(msg2)
 
 def srvPredefMovementCallback(data):
-    name = data.movement
+    file_name = data.movement
     try:
-        rospy.loginfo(rospy.get_caller_id() + " Executing movement: '" + name + "'")
-        if name[-5:]!='.json':
-            movement = dxl.loadMovement('{}/movements/' + name + ".json")
-        else:
-            movement = dxl.loadMovement('{}/movements/' + name)
+        rospy.loginfo(rospy.get_caller_id() + " Executing movement: '" + file_name + "'")
+        movement = dxl.loadMovement(file_name)
         dxl.setMovementInit(movement)
         time.sleep(0.2)
-        dxl.playMovementBlock(movement)
-        rospy.loginfo(rospy.get_caller_id() + ' Movement execution finished')
+        if data.wait:
+            dxl.playMovementBlock(movement)
+            rospy.loginfo(rospy.get_caller_id() + ' Movement execution finished')
+        else:
+            dxl.playMovement(movement)
         return PredefMovementResponse(0)
     except:
-        rospy.logerr(rospy.get_caller_id() + ' Movement not executed')
+        rospy.logwarn(rospy.get_caller_id() + ' Movement not executed')
         return PredefMovementResponse(1)
 
 def srvPlayMovementCallback(data):
@@ -125,7 +125,7 @@ srv_goto_position = rospy.Service('/poppy_goto_positions', GotoPositions, srvGot
 rospy.loginfo(rospy.get_caller_id() + ' Creating IODynamixel controller...')
 dxl = IODynamixel(creature="{}/creatures/poppy_torso_sim.json", simulator='vrep')
 if not dxl.correct:
-    rospy.logerr(rospy.get_caller_id() + ' Error creating IODynamixel object')
+    rospy.logwarn(rospy.get_caller_id() + ' Error creating IODynamixel object')
     #os._exit(1)
 else:
     dxl.setCallbackPost(pubJointStatesCallback)

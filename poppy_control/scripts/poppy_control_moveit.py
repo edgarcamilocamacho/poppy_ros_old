@@ -36,7 +36,7 @@ def srvPlanMovementCallback(data):
         try:
             groups[group_name].set_joint_value_target(target_position)
         except:
-            rospy.logerr(rospy.get_caller_id() + ' Incorrect target positions')
+            rospy.logwarn(rospy.get_caller_id() + ' Incorrect target positions')
             return PlanMovementResponse(3, [], [], [])
         rospy.loginfo(rospy.get_caller_id() + " Moving group '" + group_name + "' to " + str(data.target_pos) )
         joint_state = JointState()
@@ -81,10 +81,10 @@ def srvPlanMovementCallback(data):
             else:
                 return PlanMovementResponse(0, [], [], [])
         else:
-            rospy.logerr(rospy.get_caller_id() + ' Could not plan')
+            rospy.logwarn(rospy.get_caller_id() + ' Could not plan')
             return PlanMovementResponse(2, [], [], [])
     else:
-        rospy.logerr(rospy.get_caller_id() + ' Incorrect group name: ' + group_name)
+        rospy.logwarn(rospy.get_caller_id() + ' Incorrect group name: ' + group_name)
         return PlanMovementResponse(1, [], [], [])
 
 ### GLOBAL FUNCTIONS
