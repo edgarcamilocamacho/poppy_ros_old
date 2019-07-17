@@ -84,6 +84,7 @@ This service execute a predefined movement.
 |  | "{}/movements/saludo.json" |
 |  | *User movements:* |
 |  | "/home/user1/movements/surpise.json" |
+| *bool* wait  | wait until movement finishes |
 
 | Reply |  |
 | ------------- | ------------- |
