@@ -16,7 +16,7 @@ from moveit_msgs.msg import ExecuteTrajectoryActionGoal
 from moveit_msgs.msg import RobotState
 
 from IODynamixel.IODynamixel import read_creature
-from poppy_control.srv import PlanMovement, PlanMovementResponse
+from poppy_control.srv import PlanMovement, PlanMovementResponse, GetEndEffectorPos, GetEndEffectorPosResponse
 from poppy_control.msg import Trajectory
 
 # rosservice call /poppy_predef_movement saludos
@@ -42,7 +42,7 @@ def srvPlanMovementCallback(data):
         joint_state = JointState()
         joint_state.header.stamp = rospy.Time.now()
         joint_state.header.stamp.secs += 1
-        joint_state.name = groups[group_name].get_joints()
+        joint_state.name = groups[group_name].get_active_joints()
         if data.rand_start:
             start_position = groups[group_name].get_random_joint_values()
         else:
@@ -89,18 +89,25 @@ def srvPlanMovementCallback(data):
         rospy.logwarn(rospy.get_caller_id() + ' Incorrect group name: ' + group_name)
         return PlanMovementResponse(1, [], [], [])
 
+def srvGetEndEffectorPosCallback(data):
+    pos = groups[data.group].get_current_pose().pose
+    return GetEndEffectorPosResponse([pos.position.x, pos.position.y, pos.position.z])
+
 ### GLOBAL FUNCTIONS
 
 def robot2rad(group, angles):
-    joint_names = group.get_joints()
+    joint_names = group.get_active_joints()
     new_angles = [0] * len(joint_names)
     for i, joint in enumerate(joint_names):
         new_angles[i] = math.radians(angles[i] + motors[joint]['offset'])
     return new_angles
 
 def rad2robot(group, angles):
-    joint_names = group.get_joints()
+    joint_names = group.get_active_joints()
     new_angles = [0] * len(joint_names)
+    print('joint_names', joint_names)
+    print('angles', angles)
+    print('new_angles', new_angles)
     for i, joint in enumerate(joint_names):
         new_angles[i] = math.degrees(angles[i]) - motors[joint]['offset']
     return new_angles
@@ -176,6 +183,7 @@ motors = read_creature(creature="{}/creatures/poppy_torso_sim.json")
 ###
 #rospy.loginfo(rospy.get_caller_id()+ ' Creating services...')
 srv_plan_movement = rospy.Service('/poppy_plan_movement', PlanMovement, srvPlanMovementCallback)
+srv_get_end_effector_pos = rospy.Service('/poppy_get_end_effector_pos', GetEndEffectorPos, srvGetEndEffectorPosCallback)
 
 rospy.loginfo(rospy.get_caller_id() + ' Ready!')
 

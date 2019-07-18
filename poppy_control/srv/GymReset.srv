@@ -1,0 +1,5 @@
+string      group
+int8        angles_format
+bool        random_start
+---
+string[]    joints

@@ -60,6 +60,9 @@ add_service_files(
   PlanMovement.srv
   PlayMovement.srv
   GotoPositions.srv
+  GymStep.srv
+  GymReset.srv
+  GetEndEffectorPos.srv
 )
 
 ## Generate actions in the 'action' folder

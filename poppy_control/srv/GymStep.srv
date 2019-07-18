@@ -1,0 +1,5 @@
+float32[]   offset
+---
+float32[]   angles
+bool        collision
+bool        done

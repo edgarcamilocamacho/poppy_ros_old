@@ -1,0 +1,7 @@
+<launch>
+
+  <include file="$(find poppy_moveit_config)/launch/poppy_rviz.launch" />
+  <node pkg="poppy_control" name="poppy_control_moveit.py" type="poppy_control_moveit.py" output="screen" />
+  <node pkg="poppy_control" name="poppy_control_dxl.py" type="poppy_control_dxl.py" output="screen" />
+
+</launch>

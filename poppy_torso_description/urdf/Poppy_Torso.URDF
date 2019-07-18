@@ -321,6 +321,39 @@
 		</collision>
 		<mass>0.04863</mass>
 	</link>
+
+	<link name="r_hand">
+		<visual>
+			<geometry>
+				<sphere radius="0.002"/>
+			</geometry>
+			<material name="">
+				<color rgba="1.0 0.0 0.0 1.0"></color>
+			</material>
+		</visual>
+		<collision>
+			<geometry>
+				<sphere radius="0.002"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<link name="l_hand">
+		<visual>
+			<geometry>
+				<sphere radius="0.002"/>
+			</geometry>
+			<material name="">
+				<color rgba="1.0 0.0 0.0 1.0"></color>
+			</material>
+		</visual>
+		<collision>
+			<geometry>
+				<sphere radius="0.002"/>
+			</geometry>
+		</collision>
+	</link>
+
 	<joint name="abs_z" type="revolute">
 		<origin xyz="0 0 0.08965" rpy="1.5708 1.1258E-18 0.018388"></origin>
 		<parent link="base"></parent>
@@ -412,4 +445,17 @@
 		<axis xyz="-1 0 0"></axis>
 		<limit effort="3.1" lower="-0.0174532925199" upper="2.58308729295" velocity="7.0"></limit>
 	</joint>
+
+	<joint name="r_wrist" type="fixed">
+		<origin xyz="0.00 0.21 0.003" rpy="0 0 0"></origin>
+		<parent link="r_forearm"></parent>
+		<child link="r_hand"></child>
+	</joint>
+
+	<joint name="l_wrist" type="fixed">
+		<origin xyz="0.00 0.21 0.003" rpy="0 0 0"></origin>
+		<parent link="l_forearm"></parent>
+		<child link="l_hand"></child>
+	</joint>
+
 </robot>
