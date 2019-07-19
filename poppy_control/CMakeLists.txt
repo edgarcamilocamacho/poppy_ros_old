@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(poppy_control)
 
+add_compile_options(-std=c++11)
+
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
 
@@ -12,6 +14,8 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
   message_generation
+  moveit_core
+  moveit_ros_planning_interface
 )
 
 ## System dependencies are found with CMake's conventions
@@ -63,6 +67,7 @@ add_service_files(
   GymStep.srv
   GymReset.srv
   GetEndEffectorPos.srv
+  ForwardKinematics.srv
 )
 
 ## Generate actions in the 'action' folder
@@ -112,6 +117,10 @@ catkin_package(
 #  LIBRARIES poppy_control
 #  CATKIN_DEPENDS roscpp rospy std_msgs
 #  DEPENDS system_lib
+  CATKIN_DEPENDS
+  # ...
+  moveit_core
+  moveit_ros_planning_interface
 )
 
 ###########
@@ -123,6 +132,7 @@ catkin_package(
 include_directories(
 # include
   ${catkin_INCLUDE_DIRS}
+  ${Eigen_INCLUDE_DIRS}
 )
 
 ## Declare a C++ library
@@ -139,6 +149,10 @@ include_directories(
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
 # add_executable(${PROJECT_NAME}_node src/poppy_control_node.cpp)
+add_executable(forward_kinematics src/forward_kinematics.cpp)
+# add_dependencies(poppy_control poppy_control_gencpp)
+target_link_libraries(forward_kinematics ${catkin_LIBRARIES})
+add_dependencies(forward_kinematics beginner_tutorials_generate_messages_cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the

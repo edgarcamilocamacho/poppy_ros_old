@@ -16,7 +16,7 @@ from moveit_msgs.msg import ExecuteTrajectoryActionGoal
 from moveit_msgs.msg import RobotState
 
 from IODynamixel.IODynamixel import read_creature
-from poppy_control.srv import GymStep, GymReset
+from poppy_control.srv import GymStep, GymReset, GymStepResponse, GymResetResponse
 
 ### GLOBAL VARIABLES
 
@@ -26,11 +26,17 @@ angles_format = 0
 ### CALLBACKS
 
 def srvGymResetCallback(data):
-	group = data.group
-	angles_format = data.angles_format
+	if data.group in groups_names:
+		group = data.group
+		angles_format = data.angles_format
+		# Retornar joints
+		return
+	else:
+        rospy.logwarn(rospy.get_caller_id() + ' Incorrect group name: ' + data.group)
+        return GymResetResponse([], 1)
 
 def srvGymStepCallback(data):
-	pass
+	
 
 ### MAIN
 

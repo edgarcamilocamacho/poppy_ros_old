@@ -45,12 +45,18 @@ display_trajectory_publisher = rospy.Publisher('/move_group/display_planned_path
 
 motors = read_creature(creature="{}/creatures/poppy_torso_sim.json")
 
-groups['r_arm_4'].set_start_state_to_current_state()
+# groups['r_arm_4'].set_start_state_to_current_state()
 # pos = groups['r_arm_4'].get_current_pose('r_hand').pose
-pos = copy.deepcopy(groups['r_arm_4'].get_random_pose('r_hand').pose)
-groups['r_arm_4'].set_position_target([	pos.position.x+0.1, 
-										pos.position.y,
-										pos.position.z],
-										'r_hand')
-plan1 = groups['r_arm_4'].plan()
+
+pos = groups['r_arm_4'].get_current_joint_values()
+print(pos)
+
+pos = groups['r_arm_4'].get_current_pose().pose
+print(pos)
+
+# groups['r_arm_4'].set_position_target([	pos.position.x+0.1, 
+# 										pos.position.y,
+# 										pos.position.z],
+# 										'r_hand')
+# plan1 = groups['r_arm_4'].plan()
 # groups['r_arm_4'].execute(plan1, wait=True)

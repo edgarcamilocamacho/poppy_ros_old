@@ -1,5 +1,6 @@
 float32[]   offset
 ---
 float32[]   angles
+float32[]   xyz
 bool        collision
 bool        done
