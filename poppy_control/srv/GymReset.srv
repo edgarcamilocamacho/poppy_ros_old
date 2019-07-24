@@ -3,4 +3,4 @@ int8        angles_format
 bool        random_start
 ---
 string[]    joints
-error		int8
+int8        error
